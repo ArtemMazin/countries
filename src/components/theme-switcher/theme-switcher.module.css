@@ -1,0 +1,7 @@
+.switcher {
+  color: var(--colors-text);
+  font-size: var(--fs-sm);
+  cursor: pointer;
+  font-weight: var(--fw-normal);
+  text-transform: capitalize;
+}
