@@ -1,6 +1,14 @@
 import * as React from 'react';
 import styles from './theme-switcher.module.css';
 
-export function ThemeSwitcher() {
-  return <div className={styles.switcher}>Dark Mode</div>;
+interface IToggleTheme {
+  toggleTheme: () => void;
+}
+
+export function ThemeSwitcher({ toggleTheme }: IToggleTheme) {
+  return (
+    <div className={styles.switcher} onClick={toggleTheme}>
+      Dark Mode
+    </div>
+  );
 }
