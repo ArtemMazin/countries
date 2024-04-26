@@ -1,0 +1,36 @@
+.wrapper {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  padding: 10rem 0;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.title {
+  margin: 0 0 12px;
+  font-size: 140px;
+  color: var(--colors-text);
+  font-weight: var(--fw-light);
+}
+
+.text {
+  margin: 0 0 30px;
+  color: var(--colors-text);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-light);
+}
+
+.button {
+  margin: 0 auto;
+  display: block;
+  padding: 12px 30px;
+  background-color: var(--colors-text);
+  color: var(--colors-ui-base);
+  border: none;
+  border-radius: var(--radii);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-normal);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}

@@ -1,4 +1,7 @@
 .switcher {
+  display: flex;
+  align-items: center;
+  gap: 5px;
   color: var(--colors-text);
   font-size: var(--fs-sm);
   cursor: pointer;

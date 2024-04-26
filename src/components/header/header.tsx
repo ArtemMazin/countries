@@ -17,9 +17,11 @@ export function Header() {
   const toggleTheme = () => dispatch(switchTheme(theme === 'light' ? 'dark' : 'light'));
 
   return (
-    <header className={`container ${styles.header}`}>
-      <Logo />
-      <ThemeSwitcher toggleTheme={toggleTheme} />
+    <header className={styles.header}>
+      <div className={`container ${styles.wrapper}`}>
+        <Logo />
+        <ThemeSwitcher toggleTheme={toggleTheme} theme={theme} />
+      </div>
     </header>
   );
 }

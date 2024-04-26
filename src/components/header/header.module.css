@@ -1,6 +1,17 @@
-.header {
+.wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 0;
+}
+
+.header {
+  padding: 1.8rem;
+  background-color: var(--colors-ui-base);
+  box-shadow: var(--shadow);
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem;
+  }
 }

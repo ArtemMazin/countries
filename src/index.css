@@ -1,6 +1,7 @@
 :root {
   /* Typography */
   --family: 'Nunito Sans', sans-serif;
+  --fs-xs: 10px;
   --fs-sm: 14px;
   --fs-md: 16px;
   --fw-light: 300;
@@ -43,5 +44,4 @@ body {
   width: 100%;
   max-width: 1240px;
   margin: 0 auto;
-  padding: 0 2rem;
 }
