@@ -5,5 +5,5 @@ interface IMain {
 }
 
 export function Main({ children }: IMain) {
-  return <main>{children}</main>;
+  return <main className="container">{children}</main>;
 }

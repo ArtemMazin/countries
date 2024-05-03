@@ -17,10 +17,10 @@ interface INativeName {
   };
 }
 
-export interface ICountries {
+export interface ICountry {
   flags: IFlags;
   name: IName;
-  capital: [];
+  capital: string[];
   region: 'Africa' | 'Asia' | 'Antarctic' | 'Europe' | 'Oceania' | 'Americas';
   population: number;
 }

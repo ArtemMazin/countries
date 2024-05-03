@@ -1,5 +1,5 @@
 import { ALL_COUNTRIES } from '../utils/config';
-import { ICountries } from '../utils/interfaces';
+import { ICountry } from '../utils/interfaces';
 
 export const checkReponse = <T>(res: Response): Promise<T> => {
   return res.ok ? res.json() : res.json().then((err) => Promise.reject(err));
@@ -15,7 +15,7 @@ export async function request<T>({ url, options }: IRequest): Promise<T> {
   return checkReponse(res);
 }
 
-export function getCountriesApi(): Promise<ICountries[]> {
+export function getCountriesApi(): Promise<ICountry[]> {
   return request({
     url: ALL_COUNTRIES,
     options: {

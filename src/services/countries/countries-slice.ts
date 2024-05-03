@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { getCountriesApi } from '../../api/api';
-import { ICountries } from '../../utils/interfaces';
+import { ICountry } from '../../utils/interfaces';
 
 export const getCountries = createAsyncThunk(
   'countries/get-countries',
@@ -16,7 +16,7 @@ export const getCountries = createAsyncThunk(
 );
 
 interface IInitialCountriesSlice {
-  initialCountries: ICountries[];
+  initialCountries: ICountry[];
 }
 
 export const initialState: IInitialCountriesSlice = {
