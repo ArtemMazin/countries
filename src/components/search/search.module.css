@@ -1,0 +1,26 @@
+.search_container {
+  margin-bottom: 0;
+  width: 280px;
+  background-color: var(--colors-ui-base);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+
+  border-radius: var(--radii);
+  box-shadow: var(--shadow);
+}
+
+.search_input {
+  margin-left: 2rem;
+  border: none;
+  outline: none;
+  color: var(--color-text);
+  background-color: var(--colors-ui-base);
+}
+
+@media (max-width: 767px) {
+  .search_container {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}
