@@ -18,6 +18,10 @@
   background-color: var(--colors-ui-base);
 }
 
+.search_input::placeholder {
+  color: var(--color-text);
+}
+
 @media (max-width: 767px) {
   .search_container {
     width: 100%;

@@ -1,13 +1,17 @@
-.select {
-  width: 200px;
+.select_wrapper {
+  padding: 1rem;
   font-family: var(--family);
   background-color: var(--colors-ui-base);
-  color: var(--colors-text);
   border-radius: var(--radii);
-  padding: 0.25rem;
-  border: none;
   box-shadow: var(--shadow);
-  height: 50px;
+}
+
+.select {
+  width: 200px;
+  border: none;
+  color: var(--color-text);
+  background-color: var(--colors-ui-base);
+  outline: none;
 }
 
 .select > * {
