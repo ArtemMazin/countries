@@ -5,7 +5,7 @@ import { setCountries } from '../../services/countries/countries-selectors';
 import { getCountries } from '../../services/countries/countries-slice';
 import { Country } from '../../components/country/country';
 import { Controls } from '../../components/controls/controls';
-import { ICountry } from '../../utils/interfaces';
+import { ICountry, IRegion } from '../../utils/interfaces';
 
 export function HomePage() {
   const dispatch = useAppDispatch();
@@ -14,13 +14,13 @@ export function HomePage() {
 
   const [filteredCountries, setFilteredCountries] = React.useState<ICountry[]>(countries);
   const [searchQuery, setSearchQuery] = React.useState('');
-  const [region, setRegion] = React.useState('');
+  const [region, setRegion] = React.useState<IRegion['region']>('All');
 
   React.useEffect(() => {
     setFilteredCountries(
       countries.filter(
         (country) =>
-          (country.region === region || region === '') &&
+          (country.region === region || region === 'All') &&
           country.name.common.toLowerCase().includes(searchQuery.toLowerCase()),
       ),
     );
