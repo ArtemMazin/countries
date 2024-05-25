@@ -4,34 +4,14 @@ interface IFlags {
   alt: string;
 }
 
-interface ILanguage {
-  iso639_1: string;
-  iso639_2: string;
-  name: string;
-  nativeName: string;
-}
-
 export interface IRegion {
   region: 'Africa' | 'Asia' | 'Antarctic' | 'Europe' | 'Oceania' | 'Americas' | 'All';
-}
-
-interface ICurrency {
-  code: string;
-  name: string;
-  symbol: string;
 }
 
 interface IName {
   common: string;
   official: string;
-  nativeName: INativeName;
-}
-
-interface INativeName {
-  nep: {
-    official: string;
-    common: string;
-  };
+  nativeName: any;
 }
 
 export interface ICountry {
@@ -43,23 +23,20 @@ export interface ICountry {
 }
 
 export interface IDetailCountry {
-  name: string;
-  nativeName: string;
+  name: IName;
   flag: string;
-  flags: [
-    {
-      png: string;
-    },
-    {
-      svg: string;
-    },
-  ];
+  flags: {
+    png: string;
+    svg: string;
+    alt: string;
+  };
+
   capital: string;
   population: number;
-  region: IRegion;
+  region: string;
   subregion: string;
-  topLevelDomain: string[];
+  tld: string[];
   borders: string[];
-  currency: ICurrency;
-  languages: ILanguage[];
+  currencies: any;
+  languages: any;
 }
