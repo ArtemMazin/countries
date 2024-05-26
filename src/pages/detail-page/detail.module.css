@@ -53,12 +53,23 @@
   display: flex;
 }
 
-.list_borders {
+.borders_list {
   margin: 0;
+  padding: 0 0 0 10px;
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
   list-style-type: none;
+}
+
+.border_button {
+  padding: 0 1rem;
+  background-color: var(--colors-ui-base);
+  color: var(--colors-text);
+  box-shadow: var(--shadow);
+  line-height: 1.5;
+  cursor: pointer;
+  border: none;
 }
 
 @media (min-width: 767px) {

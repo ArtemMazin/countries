@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getCountryByNameApi } from '../../api/api';
+import { getCountriesByCodeApi, getCountryByNameApi } from '../../api/api';
 import { ICountry } from '../../utils/interfaces';
 
 export const getCountryByName = createAsyncThunk(
@@ -7,6 +7,7 @@ export const getCountryByName = createAsyncThunk(
   async (name: string, { rejectWithValue }) => {
     try {
       const country = await getCountryByNameApi(name);
+
       return country[0];
     } catch (error) {
       return rejectWithValue('Возникла ошибка, обновите страницу');
@@ -14,12 +15,27 @@ export const getCountryByName = createAsyncThunk(
   },
 );
 
+export const getCountriesByCode = createAsyncThunk(
+  'countries/get-country-by-code',
+  async (codes: string[], { rejectWithValue }) => {
+    try {
+      const countries = await getCountriesByCodeApi(codes);
+
+      return countries.map((country: ICountry) => country.name.common);
+    } catch (error) {
+      return rejectWithValue('Возникла ошибка, обновите страницу');
+    }
+  },
+);
+
 interface IDetailSlice {
-  detail: any;
+  country: any;
+  borders: any;
 }
 
 export const initialState: IDetailSlice = {
-  detail: null,
+  country: null,
+  borders: null,
 };
 
 export const detailSlice = createSlice({
@@ -28,7 +44,10 @@ export const detailSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder.addCase(getCountryByName.fulfilled, (state, action) => {
-      state.detail = action.payload;
+      state.country = action.payload;
+    });
+    builder.addCase(getCountriesByCode.fulfilled, (state, action) => {
+      state.borders = action.payload;
     });
   },
 });

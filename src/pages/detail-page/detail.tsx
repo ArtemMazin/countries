@@ -1,10 +1,10 @@
 import * as React from 'react';
 import styles from './detail.module.css';
 import { useAppDispatch, useAppSelector } from '../../redux-hooks';
-import { getDetail } from '../../services/detail/detail-selectors';
+import { getBorders, getDetail } from '../../services/detail/detail-selectors';
 import { IDetailCountry } from '../../utils/interfaces';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getCountryByName } from '../../services/detail/detail-slice';
+import { getCountriesByCode, getCountryByName } from '../../services/detail/detail-slice';
 import { MoveLeft } from 'lucide-react';
 
 export function DetailPage() {
@@ -12,12 +12,22 @@ export function DetailPage() {
   const dispatch = useAppDispatch();
 
   const country: IDetailCountry = useAppSelector(getDetail);
+  const borders = useAppSelector(getBorders);
 
   const countryName = useParams()['name'];
 
   React.useEffect(() => {
-    !country && countryName && dispatch(getCountryByName(countryName.toLowerCase()));
-  }, []);
+    countryName && dispatch(getCountryByName(countryName.toLowerCase()));
+  }, [countryName]);
+
+  React.useEffect(() => {
+    country && country.borders && dispatch(getCountriesByCode(country.borders));
+  }, [country]);
+
+  const handleClickCountry = (name: string) => {
+    dispatch(getCountryByName(name.toLowerCase()));
+    navigate(`/country/${name.toLowerCase()}`);
+  };
 
   return (
     <>
@@ -63,10 +73,22 @@ export function DetailPage() {
               </ul>
             </div>
             <div className={styles.borders_wrapper}>
-              <b>Border Countries:</b>
-              <ul className={styles.list_borders}>
-                {country.borders &&
-                  country.borders.map((border) => <li key={border}>{border} </li>)}
+              <b style={{ textWrap: 'nowrap' }}>Border Countries:</b>
+              <ul className={styles.borders_list}>
+                {country.borders && borders ? (
+                  borders.map((border: string) => (
+                    <li key={border}>
+                      <button
+                        onClick={() => handleClickCountry(border)}
+                        className={styles.border_button}
+                      >
+                        {border}
+                      </button>
+                    </li>
+                  ))
+                ) : (
+                  <span>There is no border countries</span>
+                )}
               </ul>
             </div>
           </div>

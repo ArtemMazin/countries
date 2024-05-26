@@ -1,4 +1,4 @@
-import { ALL_COUNTRIES, COUNTRY_BY_NAME } from '../utils/config';
+import { ALL_COUNTRIES, COUNTRY_BY_CODE, COUNTRY_BY_NAME } from '../utils/config';
 import { ICountry } from '../utils/interfaces';
 
 export const checkReponse = <T>(res: Response): Promise<T> => {
@@ -30,6 +30,18 @@ export function getCountriesApi(): Promise<ICountry[]> {
 export function getCountryByNameApi(name: string): any {
   return request({
     url: COUNTRY_BY_NAME(name),
+    options: {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    },
+  });
+}
+
+export function getCountriesByCodeApi(codes: string[]): any {
+  return request({
+    url: COUNTRY_BY_CODE(codes),
     options: {
       method: 'GET',
       headers: {
