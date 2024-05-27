@@ -6,9 +6,9 @@ export const getCountries = createAsyncThunk(
   'countries/get-countries',
   async (_, { rejectWithValue }) => {
     try {
-      const countries = await getCountriesApi();
+      const { data } = await getCountriesApi();
 
-      return countries;
+      return data;
     } catch (error) {
       return rejectWithValue('Возникла ошибка, обновите страницу');
     }

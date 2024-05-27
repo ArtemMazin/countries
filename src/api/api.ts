@@ -15,7 +15,7 @@ export async function request<T>({ url, options }: IRequest): Promise<T> {
   return checkReponse(res);
 }
 
-export function getCountriesApi(): Promise<ICountry[]> {
+export function getCountriesApi(): Promise<{ data: ICountry[] }> {
   return request({
     url: ALL_COUNTRIES,
     options: {

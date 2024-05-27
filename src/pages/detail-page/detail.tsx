@@ -2,7 +2,7 @@ import * as React from 'react';
 import styles from './detail.module.css';
 import { useAppDispatch, useAppSelector } from '../../redux-hooks';
 import { getBorders, getDetail } from '../../services/detail/detail-selectors';
-import { IDetailCountry } from '../../utils/interfaces';
+import { ICountry } from '../../utils/interfaces';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getCountriesByCode, getCountryByName } from '../../services/detail/detail-slice';
 import { MoveLeft } from 'lucide-react';
@@ -11,7 +11,7 @@ export function DetailPage() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const country: IDetailCountry = useAppSelector(getDetail);
+  const country: ICountry = useAppSelector(getDetail);
   const borders = useAppSelector(getBorders);
 
   const countryName = useParams()['name'];
@@ -44,8 +44,7 @@ export function DetailPage() {
             <div className={styles.list_group}>
               <ul className={styles.list}>
                 <li>
-                  <b>Native Name:</b>{' '}
-                  {country.name.nativeName[Object.keys(country.name.nativeName)[0]].common}
+                  <b>Native Name:</b> {country.nativeName}
                 </li>
                 <li>
                   <b>Population:</b> {country.population}
@@ -57,7 +56,7 @@ export function DetailPage() {
                   <b>Sub Region:</b> {country.subregion}
                 </li>
                 <li>
-                  <b>Capital:</b> {country.capital[0]}
+                  <b>Capital:</b> {country.capital}
                 </li>
               </ul>
               <ul className={styles.list}>
@@ -65,10 +64,10 @@ export function DetailPage() {
                   <b>Top Level Domain:</b> {country.tld[0]}
                 </li>
                 <li>
-                  <b>Currency:</b> {country.currencies[Object.keys(country.currencies)[0]].name}
+                  <b>Currency:</b> {country.currency}
                 </li>
                 <li>
-                  <b>Languages:</b> {country.languages[Object.keys(country.languages)[0]]}
+                  <b>Languages:</b> {country.languages.join(', ')}
                 </li>
               </ul>
             </div>

@@ -29,7 +29,7 @@ export function Country({ item }: { item: ICountry }) {
         </p>
         <p>
           <b>Capital: </b>
-          {item.capital[0]}
+          {item.capital}
         </p>
       </div>
     </div>
