@@ -6,9 +6,9 @@ export const getCountryByName = createAsyncThunk(
   'countries/get-country-by-name',
   async (name: string, { rejectWithValue }) => {
     try {
-      const country = await getCountryByNameApi(name);
+      const { data } = await getCountryByNameApi(name);
 
-      return country[0];
+      return data;
     } catch (error) {
       return rejectWithValue('Возникла ошибка, обновите страницу');
     }

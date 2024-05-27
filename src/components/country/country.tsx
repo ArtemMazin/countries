@@ -10,8 +10,8 @@ export function Country({ item }: { item: ICountry }) {
   const dispatch = useAppDispatch();
 
   const handleClick = () => {
-    dispatch(getCountryByName(item.name.common.toLowerCase()));
-    navigate(`/country/${item.name.common.toLowerCase()}`);
+    dispatch(getCountryByName(item.name.common));
+    navigate(`/country/${item.name.common}`);
   };
 
   return (

@@ -17,16 +17,16 @@ export function DetailPage() {
   const countryName = useParams()['name'];
 
   React.useEffect(() => {
-    countryName && dispatch(getCountryByName(countryName.toLowerCase()));
+    countryName && dispatch(getCountryByName(countryName));
   }, [countryName]);
 
-  React.useEffect(() => {
-    country && country.borders && dispatch(getCountriesByCode(country.borders));
-  }, [country]);
+  // React.useEffect(() => {
+  //   country && country.borders && dispatch(getCountriesByCode(country.borders));
+  // }, [country]);
 
   const handleClickCountry = (name: string) => {
-    dispatch(getCountryByName(name.toLowerCase()));
-    navigate(`/country/${name.toLowerCase()}`);
+    dispatch(getCountryByName(name));
+    navigate(`/country/${name}`);
   };
 
   return (

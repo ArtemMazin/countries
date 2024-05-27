@@ -27,7 +27,7 @@ export function getCountriesApi(): Promise<{ data: ICountry[] }> {
   });
 }
 
-export function getCountryByNameApi(name: string): any {
+export function getCountryByNameApi(name: string): Promise<{ data: ICountry }> {
   return request({
     url: COUNTRY_BY_NAME(name),
     options: {
