@@ -16,12 +16,12 @@ export const getCountryByName = createAsyncThunk(
 );
 
 export const getCountriesByCode = createAsyncThunk(
-  'countries/get-country-by-code',
+  'countries/get-borders',
   async (codes: string[], { rejectWithValue }) => {
     try {
       const countries = await getCountriesByCodeApi(codes);
 
-      return countries.map((country: ICountry) => country.name.common);
+      return countries;
     } catch (error) {
       return rejectWithValue('Возникла ошибка, обновите страницу');
     }
@@ -29,8 +29,8 @@ export const getCountriesByCode = createAsyncThunk(
 );
 
 interface IDetailSlice {
-  country: any;
-  borders: any;
+  country: ICountry | null;
+  borders: string[] | null;
 }
 
 export const initialState: IDetailSlice = {

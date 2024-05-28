@@ -2,7 +2,6 @@ import * as React from 'react';
 import styles from './detail.module.css';
 import { useAppDispatch, useAppSelector } from '../../redux-hooks';
 import { getBorders, getDetail } from '../../services/detail/detail-selectors';
-import { ICountry } from '../../utils/interfaces';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getCountriesByCode, getCountryByName } from '../../services/detail/detail-slice';
 import { MoveLeft } from 'lucide-react';
@@ -11,7 +10,7 @@ export function DetailPage() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const country: ICountry = useAppSelector(getDetail);
+  const country = useAppSelector(getDetail);
   const borders = useAppSelector(getBorders);
 
   const countryName = useParams()['name'];
@@ -20,9 +19,9 @@ export function DetailPage() {
     countryName && dispatch(getCountryByName(countryName));
   }, [countryName]);
 
-  // React.useEffect(() => {
-  //   country && country.borders && dispatch(getCountriesByCode(country.borders));
-  // }, [country]);
+  React.useEffect(() => {
+    country && country.borders && dispatch(getCountriesByCode(country.borders));
+  }, [country]);
 
   const handleClickCountry = (name: string) => {
     dispatch(getCountryByName(name));
@@ -61,7 +60,7 @@ export function DetailPage() {
               </ul>
               <ul className={styles.list}>
                 <li>
-                  <b>Top Level Domain:</b> {country.tld[0]}
+                  <b>Top Level Domain:</b> {country.tld}
                 </li>
                 <li>
                   <b>Currency:</b> {country.currency}
