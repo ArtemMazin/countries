@@ -3,6 +3,7 @@
   background-color: var(--colors-ui-base);
   border-radius: var(--radii);
   box-shadow: var(--shadow);
+  cursor: pointer;
 }
 
 .info {

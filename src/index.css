@@ -28,7 +28,8 @@ body[data-theme='light'] {
   --shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
-body {
+body,
+html {
   margin: 0;
   font-family: var(--family);
   color: var(--colors-text);
@@ -36,6 +37,9 @@ body {
   background-color: var(--colors-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  scroll-padding-top: 20px;
+  scrollbar-gutter: stable;
   text-rendering: optimizelegibility;
   text-size-adjust: 100%;
 }

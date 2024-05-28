@@ -1,6 +1,7 @@
 .search_container {
   margin-bottom: 0;
-  width: 280px;
+  max-width: 280px;
+  width: 100%;
   background-color: var(--colors-ui-base);
   padding: 1rem 2rem;
   display: flex;

@@ -39,13 +39,7 @@ export function HomePage() {
           countries.length > 0 &&
           filteredCountries.map((item) => {
             return (
-              item &&
-              item.capital &&
-              item.capital.length > 0 &&
-              item.region &&
-              item.name &&
-              item.name.common &&
-              item.population && (
+              item && (
                 <li key={item.name.official}>
                   <Country item={item} />
                 </li>
